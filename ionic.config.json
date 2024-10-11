@@ -1,0 +1,7 @@
+{
+  "name": "guitarShop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
