@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit Guitar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="guitarForm" (ngSubmit)="onSubmit()">
+    <!-- Input para la marca -->
+    <ion-item>
+      <ion-label position="stacked">Brand</ion-label>
+      <ion-input formControlName="brand" type="text" required></ion-input>
+    </ion-item>
+    <ion-note 
+      color="danger" 
+      *ngIf="guitarForm.get('brand')?.invalid && guitarForm.get('brand')?.touched">
+      Brand is required.
+    </ion-note>
+
+    <!-- Input para el modelo -->
+    <ion-item>
+      <ion-label position="stacked">Model</ion-label>
+      <ion-input formControlName="model" type="text" required></ion-input>
+    </ion-item>
+    <ion-note 
+      color="danger" 
+      *ngIf="guitarForm.get('model')?.invalid && guitarForm.get('model')?.touched">
+      Model is required.
+    </ion-note>
+
+    <!-- Botón de guardar cambios -->
+    <ion-button 
+      expand="full" 
+      type="submit" 
+      [disabled]="!guitarForm.valid">
+      Save Changes
+    </ion-button>
+  </form>
+</ion-content>

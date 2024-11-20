@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir Guitarra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="guitarForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Marca</ion-label>
+      <ion-input formControlName="brand" type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Modelo</ion-label>
+      <ion-input formControlName="model" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Botones para gestionar la imagen -->
+    <ion-item>
+      <ion-button expand="full" color="primary" (click)="takePhoto()">Tomar Foto</ion-button>
+      <ion-button expand="full" color="secondary" (click)="pickImage()">Seleccionar Imagen</ion-button>
+      <ion-button expand="full" color="danger" (click)="discardImage()" *ngIf="capturedPhoto">Descartar Imagen</ion-button>
+    </ion-item>
+
+    <!-- Vista previa de la imagen capturada -->
+    <ion-item *ngIf="capturedPhoto">
+      <ion-img [src]="capturedPhoto"></ion-img>
+    </ion-item>
+
+    <!-- Botón para enviar el formulario -->
+    <ion-button expand="full" type="submit" [disabled]="!guitarForm.valid">Añadir Guitarra</ion-button>
+  </form>
+</ion-content>

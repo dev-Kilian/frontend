@@ -1,0 +1,27 @@
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Welcome to the Guitar Shop!</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let guitar of guitars">
+      <ion-avatar slot="start">
+        <img *ngIf="guitar.filename" src="http://localhost:8080/images/{{guitar.filename}}" alt="image"/>
+      </ion-avatar>
+      <ion-label>
+        <h1>{{guitar.brand}}</h1>
+        <p>{{guitar.model}}</p>
+      </ion-label>
+      <ion-button (click)="confirmDelete(guitar.id)" color="danger">Delete</ion-button>
+      <ion-button [routerLink]="['/edit-guitar', guitar.id]">Edit</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="secondary" routerLink="/add-guitar">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
